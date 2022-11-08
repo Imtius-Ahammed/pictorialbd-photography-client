@@ -8,7 +8,7 @@ export const HomeServiceCard = ({ service }) => {
     <div>
       <div className="card   container mx-auto lg:w-4/5 my-20 lg:card-side bg-base-100 shadow-xl">
         <div  >
-        <img className="lg:w-4/5 lg:h-full"  src={img} alt="" />
+        <img className="lg:w-full lg:h-full"  src={img} alt="" />
       
         </div>
         <div className="card-body lg:w-screen">

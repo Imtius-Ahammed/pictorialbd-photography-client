@@ -5,4 +5,4 @@ const useTitle = title =>{
     document.title =`${title} - PictorialBD`;
   },[title])
 };
-export default useTitle
+export default useTitle;

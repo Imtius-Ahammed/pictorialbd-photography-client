@@ -16,6 +16,8 @@ const Login = () => {
   
   const googleProvider = new GoogleAuthProvider();
   const from = location.state?.from?.pathname || '/'
+
+  
   const handleLogin =event=>{
     event.preventDefault();
     const form = event.target;
