@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+
+import { useLoaderData } from 'react-router-dom';
 import ServiceCard from './HomeServiceCard';
 
 const HomeServices = () => {
-  const [homeServices,setHomeServices] = useState([]);
-  useEffect(()=>{
-    fetch('http://localhost:5000/services')
-    .then(res=>res.json())
-    .then(data=>setHomeServices(data))
-  },[])
+  const homeServices =useLoaderData()
   return (
     <div>
       <h2> THis is Home services</h2>
