@@ -4,6 +4,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
 import Services from "../../Pages/Services/Services/Services";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/blog',
-        element:<Blog></Blog>
+        element:<PrivateRoute><Blog></Blog></PrivateRoute>
       }
     ]
   }
