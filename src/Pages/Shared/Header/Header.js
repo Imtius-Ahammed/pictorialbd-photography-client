@@ -11,9 +11,15 @@ const Header = () => {
   <li><Link to='/blog'>Blog</Link></li>
   {
     user?.uid ?
-    <button onClick={logOut}>LogOut</button>
+    <>
+    <li><Link to='/myreviews'>MyReviews</Link></li>
+     <li><Link to='/addservices'>Add Services</Link></li>
+     <button onClick={logOut}>LogOut</button>
+    </>
+    
     :
     <>
+     
      <li><Link to='/login'>Login</Link></li>
      <li><Link to='/register'>Register</Link></li>
     </>
