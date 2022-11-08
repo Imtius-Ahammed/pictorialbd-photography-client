@@ -1,13 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
-const HomeServiceCard = ({ service }) => {
+export const HomeServiceCard = ({ service }) => {
   const { img, description, title } = service;
   return (
     <div>
       <div className="card    container mx-auto lg:w-4/6 my-20 lg:card-side bg-base-100 shadow-xl">
         <div>
-          <img  src={img} alt="Album" />
+        
+        <PhotoProvider>
+      <PhotoView>
+        <img src={img} alt="" />
+      </PhotoView>
+     
+    </PhotoProvider>
+         
         </div>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>

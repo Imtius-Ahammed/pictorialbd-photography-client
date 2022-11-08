@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
 import HomeServices from '../HomeServices/HomeServices';
@@ -11,7 +12,9 @@ const Home = () => {
       <Banner></Banner>
       <About></About>
       <HomeServices></HomeServices>
+      <Link className='flex justify-center' to='/services'><button className=' btn btn-ghost btn-outline'>See ALl</button></Link>
       <ImageGallery></ImageGallery>
+      
       
       
 
