@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const[error,setError] =useState(null);
+  const {signIn} =useContext(AuthContext);
+  const handleLogin =event=>{
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if(password.length<6){
+      setError('Password should be 6 characters long');
+      return;
+    }
+
+    signIn(email,password)
+    .then(result=>{
+      const user = result.user;
+      console.log(user);
+      form.reset();
+
+    })
+    .catch(error => console.error(error));
+
+
+  }
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-col">
+      <form onSubmit={handleLogin} className="hero w-full my-20">
+        <div className="hero-content grid md:grid-cols-2 flex-col lg:flex-col">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
             <p className="py-6">
@@ -21,6 +46,8 @@ const Login = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                name="email"
+                required
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
@@ -31,6 +58,8 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                name="password"
+                required
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
@@ -39,6 +68,7 @@ const Login = () => {
                   <Link to='/register' className="label-text-alt link link-hover">
                     Don't have an account?
                   </Link>
+                  <p className='text-red-500'>{error}</p>
                 </label>
               </div>
               <div className="form-control mt-6">
@@ -47,7 +77,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

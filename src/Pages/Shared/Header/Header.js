@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+
+  const {user,logOut} = useContext(AuthContext);
   const menuItems = <>
   <li><Link to='/'>Home</Link></li>
   <li><Link to='/services'>Services</Link></li>
   <li><Link to='/blog'>Blog</Link></li>
-  <li><Link to='/login'>Login</Link></li>
+  {
+    user?.uid ?
+    <button onClick={logOut}>LogOut</button>
+    :
+    <>
+     <li><Link to='/login'>Login</Link></li>
+     <li><Link to='/register'>Register</Link></li>
+    </>
+    
+    }
   </>
   return (
     <div>
@@ -38,6 +50,7 @@ const Header = () => {
             </ul>
           </div>
           <Link to='/' className="btn btn-ghost normal-case text-xl">PictorialBD</Link>
+          <span>{user?.email}</span>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
@@ -45,7 +58,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn">Get started</Link>
+          <Link className="btn">{user?.displayName}</Link>
         </div>
       </div>
     </div>
