@@ -64,7 +64,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn">{user?.displayName}</Link>
+          <>{user?.displayName}</>
         </div>
       </div>
     </div>

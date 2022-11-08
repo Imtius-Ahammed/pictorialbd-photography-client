@@ -8,7 +8,7 @@ const HomeServices = () => {
     <div>
       <h2> THis is Home services</h2>
       {
-        homeServices.slice(0,3).map(service=><ServiceCard key={service._id} service={service}></ServiceCard>)
+        homeServices.slice(1,4).map(service=><ServiceCard key={service._id} service={service}></ServiceCard>)
       }
       
 
