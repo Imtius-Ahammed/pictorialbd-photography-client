@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import useTitle from "../../../hooks/useTitle";
-import MyReviews from "../../MyReviews/MyReviews/MyReviews";
+
 
 import Reviews from "../Reviews/Reviews";
 
