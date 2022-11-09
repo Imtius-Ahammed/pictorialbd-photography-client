@@ -4,8 +4,9 @@ import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const ReviewTable = ({review,handleDelete}) => {
   const {user}= useContext(AuthContext);
-  const{_id,email,message} = review;
-  const [reviewDetail, setReviewDetail]=useState({})
+  const{_id,message,title} = review;
+  console.log(review);
+  
  
 
 
@@ -37,6 +38,7 @@ const ReviewTable = ({review,handleDelete}) => {
           <div>
             <div className="font-bold">{user?.displayName}</div>
             <div className="text-sm opacity-50">{user?.email}</div>
+            <div className="text-sm opacity-50">{title}</div>
           </div>
         </div>
       </td>

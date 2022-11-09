@@ -42,7 +42,6 @@ const MyReviews = () => {
 
   return (
     <div className='w-9/12 container mx-auto'>
-      <h2 className="text-5xl">Detali reviws {reviews.length}</h2>
       <div className="overflow-x-auto w-full">
   <table className="table w-full">
    

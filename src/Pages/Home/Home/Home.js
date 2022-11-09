@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useTitle from '../../../hooks/useTitle';
 import UserAddedService from '../../UserAddedService/UserAddedService';
-import UserService from '../../UserAddedService/UserService';
+
 import About from '../About/About';
 import Banner from '../Banner/Banner';
 import HomeServices from '../HomeServices/HomeServices';

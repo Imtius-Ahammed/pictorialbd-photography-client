@@ -22,15 +22,17 @@ const ServiceDetails = () => {
     const form = event.target;
     const email = form.email.value;
     const message = form.message.value;
+    const title = form.title.value;
 
 
     const review = {
       message,
-      email
+      email,
+      title
 
     }
 
-    
+
     fetch('http://localhost:5000/reviews',{
       method:'POST',
       headers: {
@@ -105,8 +107,12 @@ const ServiceDetails = () => {
     </div>
     <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
       <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">User Reviews</h2>
-      <p className="leading-relaxed mb-5 text-gray-600">Post-ironic portland shabby chic echo park, banjo fashion axe</p>
+     
     
+      <div className="relative mb-4">
+        <label htmlFor="text" className="leading-7 text-sm text-gray-600">Title</label>
+        <input type="text" readOnly defaultValue={title} required id="title" name="title" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+      </div>
       <div className="relative mb-4">
         <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
         <input type="email" defaultValue={user?.email} required id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
@@ -116,7 +122,7 @@ const ServiceDetails = () => {
         <textarea required id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
       </div>
       <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-      <p className="text-xs text-gray-500 mt-3">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p>
+     
     </div>
   </div>
 </section>
