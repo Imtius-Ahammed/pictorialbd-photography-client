@@ -1,13 +1,9 @@
 import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import useTitle from "../../hooks/useTitle";
 
 const AddServices = () => {
   useTitle("AddServices");
-  const addServices = useLoaderData();
+  
   const handleAddService = (event) => {
     event.preventDefault();
     const form = event.target;

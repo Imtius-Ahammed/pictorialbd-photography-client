@@ -14,24 +14,7 @@ const ReviewUpdate = () => {
     const email = form.email.value;
     const message = form.message.value;
 
-    fetch(`http://localhost:5000/reviews/${_id}`,{
-      method:'PUT',
-      headers: {
-        'content-type':'application/json'
-      },
-      body: JSON.stringify(storedUser)
-
-    })
-    .then(data => {
-      console.log(data);
-      if(data.acknowledged){
-        alert('Review posted');
-        form.reset();
-      }
-    })
-    .catch(er=>console.error(er));
-
-
+    
     const review = {
       message,
       email
@@ -53,6 +36,29 @@ const ReviewUpdate = () => {
       }
     })
     .catch(er=>console.error(er));
+
+
+
+
+    fetch(`http://localhost:5000/reviews/${_id}`,{
+      method:'PUT',
+      headers: {
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(storedUser)
+
+    })
+    .then(res=>res.json())
+    .then(data => {
+      console.log(data);
+      if(data.acknowledged){
+        alert('Review Updated');
+        form.reset();
+      }
+    })
+    .catch(er=>console.error(er));
+
+
   
   }
 
@@ -61,9 +67,9 @@ const ReviewUpdate = () => {
       <h2>{email}</h2>
       <h2>{message}</h2>
       <form onSubmit={reviewUpdate} className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-col">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold">Coming Soon!</h1>
            
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

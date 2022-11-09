@@ -29,6 +29,8 @@ const ServiceDetails = () => {
       email
 
     }
+
+    
     fetch('http://localhost:5000/reviews',{
       method:'POST',
       headers: {
