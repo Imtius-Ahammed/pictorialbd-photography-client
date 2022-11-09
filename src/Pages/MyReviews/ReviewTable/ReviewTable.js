@@ -1,4 +1,5 @@
 import React, { useContext, useState} from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const ReviewTable = ({review,handleDelete}) => {
@@ -45,7 +46,7 @@ const ReviewTable = ({review,handleDelete}) => {
       </td>
       
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button className="btn btn-ghost btn-xs"><Link to={`/update/${_id}`}><button>Update</button></Link></button>
       </th>
     </tr>
   );
