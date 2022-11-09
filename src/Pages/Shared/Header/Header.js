@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import { FaUserAlt, IconName } from "react-icons/fa";
 
 const Header = () => {
 
@@ -63,8 +64,9 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-4">
           <>{user?.displayName}</>
+          {user?.photoURL ? <img className="rounded-full w-10" src={user.photoURL} alt="" />:<FaUserAlt></FaUserAlt> }
         </div>
       </div>
     </div>
