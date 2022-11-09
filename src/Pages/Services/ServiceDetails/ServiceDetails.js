@@ -1,8 +1,9 @@
 
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import useTitle from "../../../hooks/useTitle";
+import MyReviews from "../../MyReviews/MyReviews/MyReviews";
 
 import Reviews from "../Reviews/Reviews";
 
@@ -70,12 +71,12 @@ const ServiceDetails = () => {
         </div>
       </div>
       <Reviews></Reviews>
+      
     </div>
 
 
-
-
-    <div>
+    {
+      user?.email ? <div>
       <form onSubmit={postReview}>
       <section className="text-gray-600 body-font relative">
   <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
@@ -101,7 +102,11 @@ const ServiceDetails = () => {
 </section>
 
       </form>
-    </div>
+    </div>:
+    <div> <h3 className="text-3xl text-orange-500">Please Login First<Link to='/login' className="btn  text-2xl btn-outline">Login</Link></h3></div>
+    }
+
+   
    </div>
   );
 };
