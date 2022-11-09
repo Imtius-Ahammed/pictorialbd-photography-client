@@ -1,34 +1,14 @@
-import React, { useContext} from "react";
+import React, { useContext, useState} from "react";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
-const ReviewTable = ({review}) => {
+const ReviewTable = ({review,handleDelete}) => {
   const {user}= useContext(AuthContext);
   const{_id,email,message} = review;
+  const [reviewDetail, setReviewDetail]=useState({})
  
 
 
-  const handleDelete = (id) => {
-    const proceed = window.confirm(
-      "Are You sure, you want to cancel this order"
-    );
-    if (proceed) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
-        method: "DELETE",
-        // headers: {
-        //   authorization: `Bearer ${localStorage.getItem("genius-token")}`,
-        // },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          // if (data.deletedCount > 0) {
-          //   alert("Deleted successfully");
-          //   const remaining = review.filter((ord) => ord._id !== id);
-          //   se(remaining);
-          // }
-        });
-    }
-  };
+
 
  
   return (
