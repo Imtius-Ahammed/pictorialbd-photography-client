@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const ReviewUpdate = () => {
@@ -14,12 +14,29 @@ const ReviewUpdate = () => {
     const email = form.email.value;
     const message = form.message.value;
 
+    fetch(`http://localhost:5000/reviews/${_id}`,{
+      method:'PUT',
+      headers: {
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(storedUser)
+
+    })
+    .then(data => {
+      console.log(data);
+      if(data.acknowledged){
+        alert('Review posted');
+        form.reset();
+      }
+    })
+    .catch(er=>console.error(er));
+
 
     const review = {
       message,
       email
-
     }
+    
     fetch('http://localhost:5000/reviews',{
       method:'POST',
       headers: {

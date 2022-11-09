@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const AllServiceCard = ({services}) => {
   const {_id, img, description, title,ratings,price,views } = services;
@@ -8,8 +10,24 @@ const AllServiceCard = ({services}) => {
   return (
     <div>
       <div className="card w-9/12  container mx-auto bg-base-100 shadow-xl">
-        <div>
-          <img src={img} alt="Shoes" />
+      <div>
+          <PhotoProvider
+            speed={() => 800}
+            easing={(type) =>
+              type === 2
+                ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+                : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+            }
+          >
+            <PhotoView src={img}>
+              <img
+                className="lg:w-full lg:h-full"
+                style={{ objectfit: "cover" }}
+                src={img}
+                alt=""
+              />
+            </PhotoView>
+          </PhotoProvider>
         </div>
         <div className="card-body">
           <div className="text-2xl ">
