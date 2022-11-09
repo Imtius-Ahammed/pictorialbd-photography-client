@@ -4,7 +4,8 @@ import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
-import MyReviews from "../../Pages/MyReviews/MyReviews";
+import MyReviews from "../../Pages/MyReviews/MyReviews/MyReviews";
+
 import ServiceDetails from "../../Pages/Services/ServiceDetails/ServiceDetails";
 import Services from "../../Pages/Services/Services/Services";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";

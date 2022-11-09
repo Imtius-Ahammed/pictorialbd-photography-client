@@ -34,6 +34,8 @@ const Login = () => {
          alert('Successfully Login');
        
         }
+       
+        setError('');
         form.reset();
         navigate(from, { replace: true });
       })
@@ -47,7 +49,10 @@ const Login = () => {
         console.log(user);
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message)
+      });
   };
 
   return (
@@ -105,6 +110,8 @@ const Login = () => {
                 >
                   Google
                 </button>
+                {error}
+                
               </div>
             </div>
           </div>
