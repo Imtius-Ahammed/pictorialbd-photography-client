@@ -56,12 +56,12 @@ const router = createBrowserRouter([
       {
         path:'/addservices',
         element:<PrivateRoute><AddServices></AddServices></PrivateRoute>,
-        loader:()=> fetch(`http://localhost:5000/services`)
+        loader:()=> fetch(`http://localhost:5000/allservices`)
       },
       {
         path:'/serviceDetails/:id',
         element:<ServiceDetails></ServiceDetails>,
-        loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+        loader:({params})=> fetch(`http://localhost:5000/allservices/${params.id}`)
       }
      
     ]

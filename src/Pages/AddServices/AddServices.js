@@ -24,10 +24,12 @@ const AddServices = () => {
       price,
       description,
     };
-    fetch("http://localhost:5000/services", {
+    fetch("http://localhost:5000/allservices", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("genius-token")}`,
+        
       },
       body: JSON.stringify(newService),
     })

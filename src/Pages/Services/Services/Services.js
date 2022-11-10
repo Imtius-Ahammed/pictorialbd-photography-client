@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+
 import AllServiceCard from "../AllServiceCard/AllServiceCard";
 
 const Services = () => {
