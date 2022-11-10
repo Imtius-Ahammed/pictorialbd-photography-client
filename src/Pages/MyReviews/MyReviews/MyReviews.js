@@ -5,24 +5,24 @@ import useTitle from "../../../hooks/useTitle";
 import ReviewTable from "../ReviewTable/ReviewTable";
 
 const MyReviews = () => {
-  const { user,logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   useTitle("MyReviews");
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
-      headers: {
+    fetch(
+      `https://pictorialbd-photography-server.vercel.app/reviews?email=${user?.email}`,
+      {
+        headers: {
           authorization: `Bearer ${localStorage.getItem("genius-token")}`,
         },
-
-    })
+      }
+    )
       .then((res) => {
-        if(res.status === 401 || res.status === 403){
-          
+        if (res.status === 401 || res.status === 403) {
           return logOut();
-
         }
-       return res.json();
+        return res.json();
       })
       .then((data) => {
         setReviews(data);
@@ -34,10 +34,8 @@ const MyReviews = () => {
       "Are You sure, you want to cancel this order"
     );
     if (proceed) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://pictorialbd-photography-server.vercel.app/reviews/${id}`, {
         method: "DELETE",
-       
-        
       })
         .then((res) => res.json())
         .then((data) => {
@@ -53,7 +51,7 @@ const MyReviews = () => {
 
   return (
     <div className="w-9/12  container mx-auto  py-20 ">
-      {reviews.length < 1  ? (
+      {reviews.length < 1 ? (
         <h1 className="text-center text-2xl">
           No Reviews here
           <Link to="/services">

@@ -21,7 +21,7 @@ const AllServiceCard = ({services}) => {
           >
             <PhotoView src={img}>
               <img
-                className="lg:w-full lg:h-full"
+                className="lg:w-full lg:h-full hover:shadow-2xl hover:shadow-black"
                 style={{ objectfit: "cover" }}
                 src={img}
                 alt=""

@@ -1,13 +1,12 @@
 import React from "react";
 import useTitle from "../../hooks/useTitle";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast.success(' Successfully Added Services');
-
+const notify = () => toast.success(" Successfully Added Services");
 
 const AddServices = () => {
   useTitle("AddServices");
-  
+
   const handleAddService = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -24,12 +23,11 @@ const AddServices = () => {
       price,
       description,
     };
-    fetch("http://localhost:5000/allservices", {
+    fetch("https://pictorialbd-photography-server.vercel.app", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("genius-token")}`,
-        
       },
       body: JSON.stringify(newService),
     })
@@ -37,11 +35,9 @@ const AddServices = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          alert('Successfully Addeded Service');
+          alert("Successfully Addeded Service");
           form.reset();
         }
-       
-
       })
       .catch((er) => console.error(er));
   };
@@ -103,13 +99,20 @@ const AddServices = () => {
               <label className="label">
                 <span className="label-text">Description</span>
               </label>
-              <textarea className="border" name="description" id="" cols="30" rows="10"></textarea>
+              <textarea
+                className="border"
+                name="description"
+                id=""
+                cols="30"
+                rows="10"
+              ></textarea>
             </div>
             <div className="form-control mt-6">
-              <button onClick={notify} className="btn btn-primary">Submit</button>
+              <button onClick={notify} className="btn btn-primary">
+                Submit
+              </button>
             </div>
             <Toaster />
-            
           </div>
         </div>
       </div>

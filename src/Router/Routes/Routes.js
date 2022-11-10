@@ -17,54 +17,73 @@ const { createBrowserRouter } = require("react-router-dom");
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Main></Main>,children: [
+    path: "/",
+    element: <Main></Main>,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>,
-        loader:()=> fetch(`http://localhost:5000/services`)
+        path: "/",
+        element: <Home></Home>,
+        loader: () =>
+          fetch(`https://pictorialbd-photography-server.vercel.app/services`),
       },
       {
-        path:'/services',
-        element:<Services></Services>,
-        loader:()=> fetch(`http://localhost:5000/allservices`)
+        path: "/services",
+        element: <Services></Services>,
+        loader: () =>
+          fetch(
+            `https://pictorialbd-photography-server.vercel.app/allservices`
+          ),
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
-    
-      {
-        path:'/register',
-        element:<Register></Register>
 
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path:'/blog',
-        element:<Blog></Blog>
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
-        path:'/myreviews',
-        element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+        path: "/myreviews",
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
       },
       {
-        path:'/update/:id',
-        element:<ReviewUpdate></ReviewUpdate>,
-        loader:({params})=> fetch(`http://localhost:5000/reviews/${params.id}`)
-
+        path: "/update/:id",
+        element: <ReviewUpdate></ReviewUpdate>,
+        loader: ({ params }) =>
+          fetch(
+            `https://pictorialbd-photography-server.vercel.app/reviews/${params.id}`
+          ),
       },
       {
-        path:'/addservices',
-        element:<PrivateRoute><AddServices></AddServices></PrivateRoute>,
-        loader:()=> fetch(`http://localhost:5000/allservices`)
+        path: "/addservices",
+        element: (
+          <PrivateRoute>
+            <AddServices></AddServices>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch(
+            `https://pictorialbd-photography-server.vercel.app/allservices`
+          ),
       },
       {
-        path:'/serviceDetails/:id',
-        element:<ServiceDetails></ServiceDetails>,
-        loader:({params})=> fetch(`http://localhost:5000/allservices/${params.id}`)
-      }
-     
-    ]
-  }
+        path: "/serviceDetails/:id",
+        element: <ServiceDetails></ServiceDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://pictorialbd-photography-server.vercel.app/allservices/${params.id}`
+          ),
+      },
+    ],
+  },
 ]);
 export default router;

@@ -4,10 +4,10 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
 export const HomeServiceCard = ({ service }) => {
-  const { _id, img, description, title, views, price } = service;
+  const { _id, img, description, title, views, price,ratings } = service;
   return (
     <div>
-      <div className="card   container mx-auto lg:w-4/5 my-20 lg:card-side bg-base-100 shadow-xl">
+      <div className="card   container mx-auto lg:w-9/12 my-20 lg:card-side bg-base-100 shadow-xl">
         <div>
           <PhotoProvider
             speed={() => 800}
@@ -19,7 +19,7 @@ export const HomeServiceCard = ({ service }) => {
           >
             <PhotoView src={img}>
               <img
-                className="lg:w-full lg:h-full"
+                className="lg:w-full lg:h-full  hover:shadow-2xl hover:shadow-black"
                 style={{ objectfit: "cover" }}
                 src={img}
                 alt=""
@@ -32,7 +32,7 @@ export const HomeServiceCard = ({ service }) => {
             {" "}
             <h2 className="card-title">{title}</h2>
           </div>
-          <div className="badge badge-secondary">NEW</div>
+          <div className="badge badge-secondary p-4 font-bold">{ratings}</div>
           <div className="py-5 ">
             {" "}
             <p>

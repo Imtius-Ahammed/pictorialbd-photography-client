@@ -1,14 +1,20 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import UserServiceCard from './UserServiceCard';
+import React, { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import UserServiceCard from "./UserServiceCard";
 
-  const UserServices = () => {
-  const userService = useLoaderData();
- 
- 
+const UserServices = () => {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("https://pictorialbd-photography-server.vercel.app")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
+
   return (
     <div>
-      {userService.slice(6,30).map(service=><UserServiceCard key={service._id} service={service}></UserServiceCard>)}
+      {services.slice(6, 30).map((service) => (
+        <UserServiceCard key={service._id} service={service}></UserServiceCard>
+      ))}
     </div>
   );
 };

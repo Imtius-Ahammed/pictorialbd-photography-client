@@ -7,6 +7,7 @@ import About from '../About/About';
 import Banner from '../Banner/Banner';
 import HomeServices from '../HomeServices/HomeServices';
 import ImageGallery from '../ImageGallery/ImageGallery';
+import UserServices from './UserServices';
 
 
 
@@ -18,6 +19,7 @@ const Home = () => {
       <Banner></Banner>
       <About></About>
       <HomeServices></HomeServices>
+      <UserServices></UserServices>
       
      
     

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
-import { FaUserAlt, IconName } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
 
 const Header = () => {
 
@@ -29,7 +29,7 @@ const Header = () => {
   </>
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-200">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -66,7 +66,7 @@ const Header = () => {
         </div>
         <div className="navbar-end gap-4">
           <>{user?.displayName}</>
-          {user?.photoURL ? <img className="rounded-full w-10" src={user.photoURL} alt="" />:<FaUserAlt></FaUserAlt> }
+          {user?.photoURL ? <img className="rounded-full w-10" src={user.photoURL} alt="" />:<FaUserAlt className="text-2xl"></FaUserAlt> }
         </div>
       </div>
     </div>

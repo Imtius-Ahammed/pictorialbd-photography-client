@@ -3,10 +3,10 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import useTitle from "../../hooks/useTitle";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 
-const notify = () => toast.success('Login Successful');
+const notify = () => toast.success("Login Successful");
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -35,32 +35,30 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         if (user) {
-         alert('Successfully Login');
-       
+          alert("Successfully Login");
         }
-       
-        setError('');
+
+        setError("");
         form.reset();
 
         const currentUser = {
-          email: user.email
-        }
-        console.log(currentUser)
+          email: user.email,
+        };
+        console.log(currentUser);
 
-        fetch('http://localhost:5000/jwt',{
-          method:'POST',
-          headers:{
-            'content-type': 'application/json'
+        fetch("https://pictorialbd-photography-server.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
           },
-          body: JSON.stringify(currentUser)
+          body: JSON.stringify(currentUser),
         })
-        .then(res=>res.json())
-        .then(data=>{
-          console.log(data);
-          localStorage.setItem('genius-token',data.token);
-          navigate(from, { replace: true });
-        });
-        
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("genius-token", data.token);
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => console.error(error));
   };
@@ -74,7 +72,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
-        setError(error.message)
+        setError(error.message);
       });
   };
 
@@ -83,13 +81,16 @@ const Login = () => {
       <form onSubmit={handleLogin} className="hero w-full my-20">
         <div className="hero-content grid md:grid-cols-2 flex-col ">
           <div className="text-center lg:text-left">
-            
-           <div>
-            <img className="" src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=826&t=st=1668058828~exp=1668059428~hmac=e253a0f4368eeef54ac70c2de52bb225dadda1545bcd41d0c8292d620bc456f5" alt="" />
-           </div>
+            <div>
+              <img
+                className=""
+                src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=826&t=st=1668058828~exp=1668059428~hmac=e253a0f4368eeef54ac70c2de52bb225dadda1545bcd41d0c8292d620bc456f5"
+                alt=""
+              />
+            </div>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <h1 className="text-5xl font-bold text-center py-5">Login now!</h1>
+            <h1 className="text-5xl font-bold text-center py-5">Login now!</h1>
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -125,21 +126,18 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control">
-              
-               <button  className="btn btn-primary my-3">Login</button>
-               
-                
+                <button className="btn btn-primary my-3">Login</button>
+
                 <div onClick={notify}>
-                <button    
-                  onClick={handleGoogleSignIn}
-                  className="btn  btn-ghost btn-outline w-full text-2xl"
-                >
-                 <FaGoogle className="mx-2" ></FaGoogle> Google
-                </button>
+                  <button
+                    onClick={handleGoogleSignIn}
+                    className="btn  btn-ghost btn-outline w-full text-2xl"
+                  >
+                    <FaGoogle className="mx-2"></FaGoogle> Google
+                  </button>
                 </div>
                 <Toaster />
                 {error}
-                
               </div>
             </div>
           </div>
