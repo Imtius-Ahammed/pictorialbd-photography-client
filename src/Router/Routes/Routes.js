@@ -2,6 +2,7 @@ import Main from "../../Layouts/Main";
 import AddServices from "../../Pages/AddServices/AddServices";
 import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
+import UserServices from "../../Pages/Home/Home/UserServices";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
 import MyReviews from "../../Pages/MyReviews/MyReviews/MyReviews";
@@ -9,7 +10,7 @@ import ReviewUpdate from "../../Pages/MyReviews/ReviewUpdate/ReviewUpdate";
 
 import ServiceDetails from "../../Pages/Services/ServiceDetails/ServiceDetails";
 import Services from "../../Pages/Services/Services/Services";
-import UserAddedService from "../../Pages/UserAddedService/UserAddedService";
+
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       {
         path:'/services',
         element:<Services></Services>,
-        loader:()=> fetch(`http://localhost:5000/services`)
+        loader:()=> fetch(`http://localhost:5000/allservices`)
       },
       {
         path:'/login',
@@ -62,12 +63,7 @@ const router = createBrowserRouter([
         element:<ServiceDetails></ServiceDetails>,
         loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
       }
-      ,
-      {
-        path:'/userServices',
-        element:<UserAddedService></UserAddedService>,
-        loader:()=> fetch(`http://localhost:5000/services`)
-      }
+     
     ]
   }
 ]);

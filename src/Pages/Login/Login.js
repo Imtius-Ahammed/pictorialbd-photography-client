@@ -3,6 +3,10 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import useTitle from "../../hooks/useTitle";
+import toast, { Toaster } from 'react-hot-toast';
+import { FaGoogle } from "react-icons/fa";
+
+const notify = () => toast.success('Login Successful');
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -58,16 +62,15 @@ const Login = () => {
   return (
     <div>
       <form onSubmit={handleLogin} className="hero w-full my-20">
-        <div className="hero-content grid md:grid-cols-2 flex-col lg:flex-col">
+        <div className="hero-content grid md:grid-cols-2 flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+            
+           <div>
+            <img className="" src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=826&t=st=1668058828~exp=1668059428~hmac=e253a0f4368eeef54ac70c2de52bb225dadda1545bcd41d0c8292d620bc456f5" alt="" />
+           </div>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <h1 className="text-5xl font-bold text-center py-5">Login now!</h1>
             <div className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -102,14 +105,20 @@ const Login = () => {
                   <p className="text-red-500">{error}</p>
                 </label>
               </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-                <button
+              <div className="form-control">
+              
+               <button onClick={notify} className="btn btn-primary my-3">Login</button>
+               
+                <Toaster />
+                <div onClick={notify}>
+                <button    
                   onClick={handleGoogleSignIn}
-                  className="btn btn-primary"
+                  className="btn  btn-ghost btn-outline w-full text-2xl"
                 >
-                  Google
+                 <FaGoogle className="mx-2" ></FaGoogle> Google
                 </button>
+                </div>
+                <Toaster />
                 {error}
                 
               </div>

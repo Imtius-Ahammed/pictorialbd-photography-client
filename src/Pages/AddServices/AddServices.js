@@ -1,5 +1,9 @@
 import React from "react";
 import useTitle from "../../hooks/useTitle";
+import toast, { Toaster } from 'react-hot-toast';
+
+const notify = () => toast.success(' Successfully Added Services');
+
 
 const AddServices = () => {
   useTitle("AddServices");
@@ -46,7 +50,7 @@ const AddServices = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Add Services now!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
           <div className="card-body">
             <div className="form-control">
               <label className="label">
@@ -97,11 +101,13 @@ const AddServices = () => {
               <label className="label">
                 <span className="label-text">Description</span>
               </label>
-              <textarea name="description" id="" cols="30" rows="10"></textarea>
+              <textarea className="border" name="description" id="" cols="30" rows="10"></textarea>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Submit</button>
+              <button onClick={notify} className="btn btn-primary">Submit</button>
             </div>
+            <Toaster />
+            
           </div>
         </div>
       </div>

@@ -1,9 +1,8 @@
-import React from "react";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { Link } from 'react-router-dom';
 
-const UserService = ({service}) => {
+const UserServiceCard = ({service}) => {
   const {_id,img,price,description,title}=service;
   return (
     <div>
@@ -60,4 +59,5 @@ const UserService = ({service}) => {
   );
 };
 
-export default UserService;
+
+export default UserServiceCard;

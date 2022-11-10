@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
 
     if(loading){
         console.log('yes loading found');
-        return <div><button className="btn loading">loading</button></div>
+        return <div><button className="btn btn-square loading"></button></div>;
     }
 
     if(user && user.uid) {

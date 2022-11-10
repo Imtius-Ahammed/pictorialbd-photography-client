@@ -1,21 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import useTitle from '../../../hooks/useTitle';
-import ReviewTable from '../ReviewTable/ReviewTable';
-
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import useTitle from "../../../hooks/useTitle";
+import ReviewTable from "../ReviewTable/ReviewTable";
 
 const MyReviews = () => {
-  const{user} = useContext(AuthContext);
-  useTitle('MyReviews');
-  const[reviews,setReviews]= useState([]);
+  const { user } = useContext(AuthContext);
+  useTitle("MyReviews");
+  const [reviews, setReviews] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-    .then(res=>res.json())
-    .then(data=>setReviews(data))
-
-  },[user?.email])
-
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, [user?.email]);
 
   const handleDelete = (id) => {
     const proceed = window.confirm(
@@ -31,8 +29,8 @@ const MyReviews = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+
           if (data.deletedCount > 0) {
-            alert("Deleted successfully");
             const remaining = reviews.filter((ord) => ord._id !== id);
             setReviews(remaining);
           }
@@ -41,33 +39,38 @@ const MyReviews = () => {
   };
 
   return (
-    <div className='w-9/12 container mx-auto'>
-      <div className="overflow-x-auto w-full">
-  <table className="table w-full">
-   
-    <thead>
-      <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
-        <th>Name</th>
-        <th>Reviews</th>
-        <th>Ratings</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {reviews.map(review=><ReviewTable key={review._id} review={review} handleDelete={handleDelete}></ReviewTable>)}
-      
-    </tbody>
-    
-   
-    
-  </table>
-</div>
-     
+    <div className="w-9/12  container mx-auto  py-20 ">
+      {reviews.length < 1 ? (
+        <h1 className="text-center text-2xl">
+          No Reviews here
+          <Link to="/services">
+            <button className="btn ">Add Reviews</button>
+          </Link>
+        </h1>
+      ) : (
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Reviews</th>
+                <th>Ratings</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {reviews.map((review) => (
+                <ReviewTable
+                  key={review._id}
+                  review={review}
+                  handleDelete={handleDelete}
+                ></ReviewTable>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

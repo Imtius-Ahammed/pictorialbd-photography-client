@@ -5,6 +5,7 @@ const ReviewUpdate = () => {
   const storedUser = useLoaderData();
   
   const { message, email, _id } = storedUser;
+  console.log(storedUser)
 
   
   const reviewUpdate=event=>{
@@ -66,6 +67,7 @@ const ReviewUpdate = () => {
     <div>
       <h2>{email}</h2>
       <h2>{message}</h2>
+      
       <form onSubmit={reviewUpdate} className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-col">
           <div className="text-center lg:text-left">

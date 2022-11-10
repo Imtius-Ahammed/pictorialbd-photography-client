@@ -6,9 +6,9 @@ const HomeServices = () => {
   const homeServices =useLoaderData()
   return (
     <div>
-      <h2> THis is Home services</h2>
+      <h2 className='text-3xl text-center font-bold'> THis is Home services</h2>
       {
-        homeServices.slice(1,4).map(service=><ServiceCard key={service._id} service={service}></ServiceCard>)
+        homeServices.map(service=><ServiceCard key={service._id} service={service}></ServiceCard>)
       }
       
 
