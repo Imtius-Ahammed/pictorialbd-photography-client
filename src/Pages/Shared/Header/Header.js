@@ -56,6 +56,7 @@ const Header = () => {
            
             </ul>
           </div>
+          <img className="rounded-full w-14" src="https://styles.redditmedia.com/t5_2s2s16/styles/communityIcon_h8aka8fcyc651.png" alt="" />
           <Link to='/' className="btn btn-ghost normal-case text-xl">PictorialBD</Link>
          
         </div>

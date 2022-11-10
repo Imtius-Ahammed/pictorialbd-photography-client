@@ -13,7 +13,7 @@ import Services from "../../Pages/Services/Services/Services";
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
-const { createBrowserRouter } = require("react-router-dom");
+const { createBrowserRouter, Link } = require("react-router-dom");
 
 const router = createBrowserRouter([
   {
@@ -83,6 +83,10 @@ const router = createBrowserRouter([
             `https://pictorialbd-photography-server.vercel.app/allservices/${params.id}`
           ),
       },
+      {
+        path:'*',
+        element:<div className="text-center py-10 text-4xl  text-red-400">No Pages Found <Link className="btn" to='/'>Go Back</Link></div>
+      }
     ],
   },
 ]);
