@@ -43,7 +43,7 @@ const AddServices = () => {
   };
 
   return (
-    <form onSubmit={handleAddService} className="hero min-h-screen bg-base-200">
+    <form onSubmit={handleAddService} className="hero min-h-screen">
       <div className="hero-content flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Add Services now!</h1>
