@@ -6,6 +6,9 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
 import Reviews from "../Reviews/Reviews";
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = () => toast.success(" Review Posted");
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -47,7 +50,7 @@ const ServiceDetails = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          alert("Review posted");
+          
           form.reset();
         }
       })
@@ -181,9 +184,12 @@ const ServiceDetails = () => {
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     ></textarea>
                   </div>
-                  <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                    Button
+                 <div onClick={notify}>
+                 <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    Post Review
                   </button>
+                 </div>
+                 <Toaster/>
                 </div>
               </div>
             </section>
@@ -191,9 +197,9 @@ const ServiceDetails = () => {
         </div>
       ) : (
         <div className="text-center py-5">
-          {" "}
+          
           <h3 className="text-3xl text-orange-500">
-            Please login to add a review{" "}
+            Please login to add a review
             <Link to="/login" className="btn  text-2xl btn-outline">
               Login
             </Link>
