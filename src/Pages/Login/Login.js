@@ -35,7 +35,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         if (user) {
-          alert("Successfully Login");
+          toast.success('Sign In Successfully')
         }
 
         setError("");
@@ -68,7 +68,9 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success('Sign In Successfully')
         navigate(from, { replace: true });
+
       })
       .catch((error) => {
         console.error(error);
@@ -78,7 +80,8 @@ const Login = () => {
 
   return (
     <div>
-      <form onSubmit={handleLogin} className="hero w-full my-20">
+     <div>
+     <form onSubmit={handleLogin} className="hero w-full my-20">
         <div className="hero-content grid md:grid-cols-2 flex-col ">
           <div className="text-center lg:text-left">
             <div>
@@ -128,21 +131,24 @@ const Login = () => {
               <div className="form-control">
                 <button className="btn btn-primary my-3">Login</button>
 
-                <div onClick={notify}>
-                  <button
-                    onClick={handleGoogleSignIn}
-                    className="btn  btn-ghost btn-outline w-full text-2xl"
-                  >
-                    <FaGoogle className="mx-2"></FaGoogle> Google
-                  </button>
-                </div>
-                <Toaster />
+               
+                
                 {error}
               </div>
+           
             </div>
           </div>
         </div>
       </form>
+      <div  className="text-center mb-5">
+                  <button
+                    onClick={handleGoogleSignIn}
+                    className="btn  btn-ghost  btn-outline text-2xl"
+                  >
+                    <FaGoogle className="mx-2"></FaGoogle> Google
+                  </button>
+                </div>
+     </div>
     </div>
   );
 };

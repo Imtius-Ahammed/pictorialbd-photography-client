@@ -11,17 +11,17 @@ const MyReviews = () => {
 
   useEffect(() => {
     fetch(
-      `https://pictorialbd-photography-server.vercel.app/reviews?email=${user?.email}`,
+      `https://pictorialbd-photography-server-imtius-ahammed.vercel.app/reviews?email=${user?.email}`,
       {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("genius-token")}`,
-        },
+        // headers: {
+        //   authorization: `Bearer ${localStorage.getItem("genius-token")}`,
+        // },
       }
     )
       .then((res) => {
-        if (res.status === 401 || res.status === 403) {
-          return logOut();
-        }
+        // if (res.status === 401 || res.status === 403) {
+        //   return logOut();
+        // }
         return res.json();
       })
       .then((data) => {
